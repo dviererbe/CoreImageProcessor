@@ -1,0 +1,75 @@
+﻿<Window x:Class="CoreImageProcessor.Windows.ToneSeparationOptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreImageProcessor.Windows"
+        xmlns:validationRules="clr-namespace:CoreImageProcessor.ValidationRules"
+        mc:Ignorable="d"
+        Title="Tone Separation" Height="450" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".8cm" />
+            <RowDefinition Height=".8cm" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Margin="5" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="From (inclusive)" />
+            <TextBox x:Name="inputFrom" >
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="To (inclusive)" />
+            <TextBox x:Name="inputTo" />
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="0" Grid.Column="2">
+            <TextBlock Text="Assigned Value" />
+            <TextBox x:Name="inputValue" />
+        </StackPanel>
+
+        <StackPanel Margin="5" Grid.Row="0" Grid.Column="3">
+            <TextBlock Visibility="Hidden" />
+            <Button Content="Add" Click="AddButtonClicked" />
+        </StackPanel>
+
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" ItemsSource="{Binding Intervals}">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True">
+                    <GridViewColumn Header="From (inclusive)" DisplayMemberBinding="{Binding From}" Width="Auto" />
+                    <GridViewColumn Header="To (inclusive)" DisplayMemberBinding="{Binding To}" Width="Auto" />
+                    <GridViewColumn Header="Assigned Value" DisplayMemberBinding="{Binding Value}" Width="Auto" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="Default Value:" VerticalAlignment="Center" Margin="5" />
+            <TextBox Width="50"  VerticalAlignment="Center" Margin="5" >
+                <TextBox.Text>
+                    <Binding Path="DefaultValue" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsByteValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Margin="5" Padding="10, 0" Click="OkButtonClicked" />
+            <Button Content="Cancel" Margin="5" Padding="10, 0" Click="CancelButtonClicked" />
+        </StackPanel>
+    </Grid>
+</Window>

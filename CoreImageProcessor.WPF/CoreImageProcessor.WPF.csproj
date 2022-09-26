@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>CoreImageProcessor</RootNamespace>
+    <Nullable>Enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Media\Logo.png" />
+    <None Remove="Media\TransparentBackgroundTile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Media\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Media\TransparentBackgroundTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ManagedCuda" Version="10.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0007" />
+  </ItemGroup>
+
+</Project>

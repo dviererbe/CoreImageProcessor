@@ -1,0 +1,95 @@
+﻿<Window x:Class="CoreImageProcessor.Windows.ScaleImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreImageProcessor.Windows"
+        xmlns:converters="clr-namespace:CoreImageProcessor.Converters"
+        xmlns:validationRules="clr-namespace:CoreImageProcessor.ValidationRules"
+        mc:Ignorable="d"
+        x:Name="window"
+        Title="Scale Image" Height="325" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:EnumDescriptionConverter x:Key="enumConverter" />
+        <converters:ToStringConverter x:Key="toStringConverter" />
+    </Window.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".8cm" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Original Image Size: " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3" />
+
+            <TextBlock Text="Width:" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="Height:" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+            <TextBox Text="{Binding OldWidth, Mode=OneTime}" Grid.Row="1" Grid.Column="2" Margin="2" IsReadOnly="True" />
+            <TextBox Text="{Binding OldHeight, Mode=OneTime}" Grid.Row="2" Grid.Column="2" Margin="2" IsReadOnly="True" />
+
+            <TextBlock Text="Pixels" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" />
+            <TextBlock Text="Pixels" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+            <TextBlock Text="New Image Size: " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" Grid.ColumnSpan="3" />
+
+            <Border Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="8,12" BorderBrush="Black" BorderThickness="1" />
+            <CheckBox Content="Linked" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Center" IsChecked="{Binding NewWidthAndHeightLinked}" />
+            <Rectangle Fill="{Binding ElementName=window, Path=Background}" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" />
+
+            <TextBlock Text="Width:" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBlock Text="Height:" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+            <TextBox Grid.Row="4" Grid.Column="2" Margin="2">
+                <TextBox.Text>
+                    <Binding Path="NewWidth" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsPositiveIntegerValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Grid.Row="5" Grid.Column="2" Margin="2">
+                <TextBox.Text>
+                    <Binding Path="NewHeight" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsPositiveIntegerValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBlock Text="Pixels" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" />
+            <TextBlock Text="Pixels" Grid.Row="5" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+            <TextBlock Text="Image Scaling Algorithm: " FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="6" Grid.ColumnSpan="3" />
+            <ComboBox Grid.Row="7" Margin="0,2,5,2" Grid.ColumnSpan="4">
+                <ComboBoxItem Content="Nearest Neighbor Interpolation " IsSelected="True" />
+            </ComboBox>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Margin="5" Padding="10, 0" Click="OkButtonClicked" />
+            <Button Content="Cancel" Margin="5" Padding="10, 0" Click="CancelButtonClicked" />
+        </StackPanel>
+    </Grid>
+</Window>

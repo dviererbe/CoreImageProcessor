@@ -1,0 +1,74 @@
+﻿<Window x:Class="CoreImageProcessor.Windows.BlackAndWhiteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreImageProcessor.Windows"
+        xmlns:validationRules="clr-namespace:CoreImageProcessor.ValidationRules"
+        mc:Ignorable="d"
+        Title="Black &amp; White" Height="325" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".8cm" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Red: " Width="40" FontWeight="Bold" />
+                <TextBox Width="70">
+                    <TextBox.Text>
+                        <Binding Path="RedValue" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:StringIsDoubleBetweenMinus300AndPlus300ValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="%" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <Slider Minimum="-300" Maximum="300" TickPlacement="BottomRight"  Value="{Binding RedValue, Mode=TwoWay}" Margin="10" TickFrequency="0.1" IsSnapToTickEnabled="True" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Green: " Width="40" FontWeight="Bold" />
+                <TextBox Width="70">
+                    <TextBox.Text>
+                        <Binding Path="GreenValue" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:StringIsDoubleBetweenMinus300AndPlus300ValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="%" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <Slider Minimum="-300" Maximum="300" TickPlacement="BottomRight"  Value="{Binding GreenValue, Mode=TwoWay}" Margin="10" TickFrequency="0.1" IsSnapToTickEnabled="True" />
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Blue: " Width="40" FontWeight="Bold" />
+                <TextBox Width="70">
+                    <TextBox.Text>
+                        <Binding Path="BlueValue" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:StringIsDoubleBetweenMinus300AndPlus300ValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="%" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <Slider Minimum="-300" Maximum="300" TickPlacement="BottomRight"  Value="{Binding BlueValue, Mode=TwoWay}" Margin="10" TickFrequency="0.1" IsSnapToTickEnabled="True" />
+
+            <TextBlock Text="Conversion: " FontWeight="Bold" />
+            <CheckBox Content="Convert to Grayscale" IsChecked="{Binding ConvertToGrayscale, Mode=TwoWay}" Margin="10" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Margin="5" Padding="10, 0" Click="OkButtonClicked" />
+            <Button Content="Cancel" Margin="5" Padding="10, 0" Click="CancelButtonClicked" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,307 @@
+﻿<Window x:Class="CoreImageProcessor.Windows.CustomFilterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreImageProcessor.Windows"
+        xmlns:converters="clr-namespace:CoreImageProcessor.Converters"
+        xmlns:validationRules="clr-namespace:CoreImageProcessor.ValidationRules"
+        mc:Ignorable="d"
+        Title="Custom Filter" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:EnumDescriptionConverter x:Key="enumConverter" />
+        <converters:ToStringConverter x:Key="toStringConverter" />
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2cm" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1.2cm" />
+            <RowDefinition Height="1cm" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <StackPanel>
+                <TextBlock Text="Edge Handling: " FontWeight="Bold" />
+                <ComboBox Margin="10"  Width="200" ItemsSource="{Binding EdgeHandlingOptions}" SelectedItem="{Binding SelectedEdgeHandling}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Converter={StaticResource toStringConverter}}" ToolTip="{Binding Converter={StaticResource enumConverter}}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        
+        <!-- Not elegant, but it works -->
+        <UniformGrid Columns="5" Rows="5" Grid.Row="1" Margin="10">
+            <UniformGrid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="Text" Value="0" />
+                </Style>
+            </UniformGrid.Resources>
+
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_0X0" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_1X0" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_2X0" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_3X0" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_4X0" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_0X1" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_1X1" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_2X1" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_3X1" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_4X1" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_0X2" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_1X2" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_2X2" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_3X2" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_4X2" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_0X3" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_1X3" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_2X3" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_3X3" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_4X3" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_0X4" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_1X4" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_2X4" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_3X4" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox>
+                <TextBox.Text>
+                    <Binding Path="FilterMaskValue_4X4" UpdateSourceTrigger="LostFocus">
+                        <Binding.ValidationRules>
+                            <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </UniformGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Factor:" VerticalAlignment="Center" />
+                <TextBox Width="60" VerticalAlignment="Center" >
+                    <TextBox.Text>
+                        <Binding Path="Factor" UpdateSourceTrigger="LostFocus">
+                            <Binding.ValidationRules >
+                                <validationRules:StringIsFiniteFloatValidationRule ValidationStep="RawProposedValue" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="MinWidth" Value="50" />
+                    <Setter Property="Margin" Value="10, 0" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Content="OK" Click="OkButtonClicked" />
+            <Button Content="Cancel" Click="CancelButtonClicked" />
+        </StackPanel>
+
+    </Grid>
+</Window>

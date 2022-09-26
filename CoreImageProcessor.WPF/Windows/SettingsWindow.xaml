@@ -1,0 +1,36 @@
+﻿<Window x:Class="CoreImageProcessor.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoreImageProcessor.Windows"
+        mc:Ignorable="d"
+        Title="Settings" Height="225" MinHeight="225"  Width="400" MinWidth="400" WindowStartupLocation="CenterScreen"> 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height=".8cm" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="10" >
+            <StackPanel Margin="0,5">
+                <CheckBox Content="Use CUDA acceleration (if possible)" IsChecked="{Binding UseCUDA, Mode=TwoWay}" />
+                <TextBlock TextWrapping="Wrap" Text="(Uses your NVIDEA Graphics Card to accelarate image processing.)" Margin="20,0,0,0" FontSize="10" Foreground="#FF515151" />
+            </StackPanel>
+            <StackPanel Margin="0,5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Maximal Degree of Parallelization: " />
+                    <TextBlock Text="{Binding MaxDegreeOfParalelization, Mode=OneWay}" />
+                </StackPanel>
+                <TextBlock TextWrapping="Wrap" Text="(How many parallel tasks are used maximally for the image processing algorithms.)" Margin="20,0,0,0" FontSize="10" Foreground="#FF515151" />
+                <Slider Width="120" Minimum="1" Maximum="{Binding ParallelizationLimit, Mode=OneTime}" Value="{Binding MaxDegreeOfParalelization, Mode=TwoWay}" TickPlacement="BottomRight" TickFrequency="1" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Margin="5" Padding="10, 0" Click="OnOkClicked" />
+            <Button Content="Apply" IsEnabled="{Binding Unsaved, Mode=OneWay}" Margin="5" Padding="10, 0" Click="OnApplyClicked" />
+            <Button Content="Cancel" Margin="5" Padding="10, 0" Click="OnCancelCicked" />
+        </StackPanel>
+    </Grid>
+</Window>

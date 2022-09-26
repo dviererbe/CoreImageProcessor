@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreImageProcessor.WPF", "CoreImageProcessor.WPF\CoreImageProcessor.WPF.csproj", "{A3430197-9A6C-45AB-9463-9C5185B35B6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Debug|x64.Build.0 = Debug|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Debug|x86.Build.0 = Debug|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Release|x64.ActiveCfg = Release|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Release|x64.Build.0 = Release|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Release|x86.ActiveCfg = Release|Any CPU
+		{A3430197-9A6C-45AB-9463-9C5185B35B6E}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99B41D6F-C1BD-48EE-8181-8927EAD39C4A}
+	EndGlobalSection
+EndGlobal
