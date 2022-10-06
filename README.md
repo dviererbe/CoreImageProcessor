@@ -6,7 +6,7 @@ An WPF image manipulation UI for a C#/.Net Core cross-platform image manipulatio
 
 ## License
 
-Health Track    
+CoreImageProcessor 
 Copyright (C) 2019-2022 Dominik Viererbe
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or *(at your option)* any later version.
