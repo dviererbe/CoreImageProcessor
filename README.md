@@ -4,6 +4,8 @@
 
 An WPF image manipulation UI for a C#/.Net Core cross-platform image manipulation library, which I wrote for a university course. Additionally, I added partial C++ NVIDIA CUDA Support to explore GPU acceleration of long running, CPU-bound tasks. This was a lasting experience as it was a great introduction to GPU acceleration in general.
 
+![Screenshot](./Screenshot.png)
+
 ## License
 
 CoreImageProcessor    
